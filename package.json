@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/teaguecnelson/react-counter.git"
+    "url": "git+https://github.com/teaguecnelson/psq.git"
   },
   "author": "Teague Nelson",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/teaguecnelson/react-counter/issues"
+    "url": "https://github.com/teaguecnelson/psq/issues"
   },
-  "homepage": "https://github.com/teaguecnelson/react-counter#readme",
+  "homepage": "https://github.com/teaguecnelson/psq#readme",
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
     "babel-cli": "^6.24.1",

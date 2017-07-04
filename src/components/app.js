@@ -40,7 +40,7 @@ export class App extends React.Component {
 			<div>
 			<QuizMeta total={this.countQuestions()} />
 			<MidResult />
-			<Question questions={this.state.allQuestions} />
+			<Question questions={ this.state.allQuestions } />
 			</div>
 		)
 	}
