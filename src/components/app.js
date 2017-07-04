@@ -1,60 +1,47 @@
 import React from 'react'
-import { DogWalkList } from './DogWalkList'
-import { DogWalkCount } from './DogWalkCount-statelessComponent'
-import { AddDayForm } from './AddDayForm-statelessComponent'
-import { Menu } from './Menu'
+import { QuizMeta } from './QuizMeta'
+import { MidResult } from './MidResult'
+import { Question } from './Question'
 
 export class App extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			allWalkDays: [
+			allQuestions: [
 			{
-				destination: "Park Slope",
-				date: "2017-04-07",
-				raining: true,
-				offleash: false
+				question: "Question 01",
+				description: "Question 01's description",
+				answer01: "Answer 1.1",
+				answer02: "Answer 1.2",
+				answer03: "Answer 1.3"
+			},
+			{
+				question: "Question 02",
+				description: "Question 02's description",
+				answer01: "Answer 2.1",
+				answer02: "Answer 2.2",
+				answer03: "Answer 2.3"
+			},
+			{
+				question: "Question 03",
+				description: "Question 03's description",
+				answer01: "Answer 3.1",
+				answer02: "Answer 3.2",
+				answer03: "Answer 3.3"
 			}
 		]
 		}
-		this.addDay = this.addDay.bind(this)
-		console.log(this.state)
 	}
-	addDay(newDay) {
-		this.setState({
-			allWalkDays: [
-				...this.state.allWalkDays,
-				newDay
-			]
-		}, function () {
-			console.log(this.state)
-		})
-	}
-	countDays(filter) {
-		return this.state.allWalkDays.filter(
-			(day) => (filter) ? day[filter] : day
-		).length
+	countQuestions(filter) {
+		return this.state.allQuestions.length
 	}
 	render() {
-		//changing paths resets the state?
 		return (
-			<div className="app">
-			<Menu />
-			{(this.props.location.pathname === "/") ? 
-				<DogWalkCount total={this.countDays()}
-							  raining={this.countDays("raining")}
-							  offleash={this.countDays("offleash")} />
-			: (this.props.location.pathname === "/add-day") ?
-				<AddDayForm onNewDay={this.addDay} />
-			:
-				<DogWalkList days={this.state.allWalkDays} />
-			}
+			<div>
+			<QuizMeta total={this.countQuestions()} />
+			<MidResult />
+			<Question questions={this.state.allQuestions} />
 			</div>
 		)
 	}
 }
-
-
-
-
-
