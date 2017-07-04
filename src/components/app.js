@@ -32,15 +32,21 @@ export class App extends React.Component {
 		]
 		}
 	}
-	countQuestions(filter) {
+	countQuestions() {
 		return this.state.allQuestions.length
 	}
 	render() {
+		const allQuestions = this.state.allQuestions
 		return (
 			<div>
-			<QuizMeta total={this.countQuestions()} />
+			<QuizMeta total={this.countQuestions()}
+					  currentQuestion={ 2+1 } />
 			<MidResult />
-			<Question questions={ this.state.allQuestions } />
+			<Question question={ this.state.allQuestions[2]["question"] }
+					  description={ this.state.allQuestions[2]["description"] }
+					  answer01={ this.state.allQuestions[2]["answer01"] }
+					  answer02={ this.state.allQuestions[2]["answer02"] }
+					  answer03={ this.state.allQuestions[2]["answer03"] } />
 			</div>
 		)
 	}
