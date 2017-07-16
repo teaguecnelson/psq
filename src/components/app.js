@@ -5,7 +5,6 @@ import { Question } from './Question'
 import { Results } from './Results'
 
 export class App extends React.Component {
-
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -69,7 +68,7 @@ export class App extends React.Component {
 		const allQuestions = this.state.allQuestions
 		let button = null;
 	    if (this.state.i>0) {
-	      button = <button className="btn" onClick={this.decrementCount}>Previous Question</button>;
+	      var prevbutton = <button onClick={this.decrementCount}>Previous Question</button>;
 	    }
 	    if (this.state.i + 1>this.countQuestions()) {
 	      return <Results />;
@@ -83,8 +82,7 @@ export class App extends React.Component {
 					  question={ this.state.allQuestions[this.state.i]["question"] }
 					  description={ this.state.allQuestions[this.state.i]["description"] }
 					  answers={ this.state.allQuestions[this.state.i]["answers"] } />
-			<button className="btn" onClick={this.incrementCount}>Increment</button>
-			{button}
+			{prevbutton}
 			</div>
 		)
 	}
