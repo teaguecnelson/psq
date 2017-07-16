@@ -17,10 +17,7 @@ export class App extends React.Component {
 				answers: [
 				"Answer 1.1",
 				"Answer 1.2",
-				"Answer 1.3",
-				"Answer 1.2",
-				"Answer 1.2",
-				"Answer 1.2", ]
+				"Answer 1.3" ]
 			},
 			{
 				question: "Question 02",
@@ -81,8 +78,11 @@ export class App extends React.Component {
 			<MidResult />
 			<Question question={ this.state.allQuestions[this.state.i]["question"] }
 					  description={ this.state.allQuestions[this.state.i]["description"] }
-					  answers={ this.state.allQuestions[this.state.i]["answers"] } />
+					  answer01={ this.state.allQuestions[this.state.i]["answer01"] }
+					  answer02={ this.state.allQuestions[this.state.i]["answer02"] }
+					  answer03={ this.state.allQuestions[this.state.i]["answer03"] } />
 			<button className="btn" onClick={this.incrementCount}>Increment</button>
+			{Object.keys(this.state.allQuestions[2]).length - 2}
 			{button}
 			</div>
 		)
