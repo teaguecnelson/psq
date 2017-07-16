@@ -18,9 +18,7 @@ export class App extends React.Component {
 				"Answer 1.1",
 				"Answer 1.2",
 				"Answer 1.3",
-				"Answer 1.2",
-				"Answer 1.2",
-				"Answer 1.2", ]
+				"Answer 1.4" ]
 			},
 			{
 				question: "Question 02",
@@ -36,7 +34,9 @@ export class App extends React.Component {
 				answers: [
 				"Answer 3.1",
 				"Answer 3.2",
-				"Answer 3.3" ]
+				"Answer 3.3",
+				"Answer 3.4",
+				"Answer 3.5" ]
 			},
 			{
 				question: "Question 04",
