@@ -64,7 +64,7 @@ export class App extends React.Component {
 	    this.setState({
 	      i: this.state.i - 1
 	    });
-	}
+	}	
 	render() {
 		const allQuestions = this.state.allQuestions
 		let button = null;
@@ -79,7 +79,8 @@ export class App extends React.Component {
 			<QuizMeta total={this.countQuestions()}
 					  currentQuestion={ this.state.i + 1 } />
 			<MidResult />
-			<Question question={ this.state.allQuestions[this.state.i]["question"] }
+			<Question incrementCount={ this.incrementCount }
+					  question={ this.state.allQuestions[this.state.i]["question"] }
 					  description={ this.state.allQuestions[this.state.i]["description"] }
 					  answers={ this.state.allQuestions[this.state.i]["answers"] } />
 			<button className="btn" onClick={this.incrementCount}>Increment</button>

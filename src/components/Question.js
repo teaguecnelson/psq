@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const AnswerList = (props) => {
   const answers = props.answers
   const listItems = answers.map((answer) =>
-    <li key={answer}>{answer}</li>
+    <li key={answer}><button>{answer}</button></li>
   )
   return (
     <ul>
@@ -17,7 +17,7 @@ export const Question = (props) => (
 	<div className="question-wrapper">
 		<h2>{ props.question }</h2>
 		<p>{ props.description }</p>
-	    <AnswerList answers={props.answers} />
+	    <AnswerList answers={props.answers}/>
 	</div>
 )
 
