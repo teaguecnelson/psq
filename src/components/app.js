@@ -1,60 +1,89 @@
 import React from 'react'
-import { DogWalkList } from './DogWalkList'
-import { DogWalkCount } from './DogWalkCount-statelessComponent'
-import { AddDayForm } from './AddDayForm-statelessComponent'
-import { Menu } from './Menu'
+import { QuizMeta } from './QuizMeta'
+import { MidResult } from './MidResult'
+import { Question } from './Question'
+import { Results } from './Results'
 
 export class App extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			allWalkDays: [
+			i: 0,
+			allQuestions: [
 			{
-				destination: "Park Slope",
-				date: "2017-04-07",
-				raining: true,
-				offleash: false
+				question: "Question 01",
+				description: "Question 01's description",
+				answers: [
+				"Answer 1.1",
+				"Answer 1.2",
+				"Answer 1.3",
+				"Answer 1.4" ]
+			},
+			{
+				question: "Question 02",
+				description: "Question 02's description",
+				answers: [
+				"Answer 2.1",
+				"Answer 2.2",
+				"Answer 2.3" ]
+			},
+			{
+				question: "Question 03",
+				description: "Question 03's description",
+				answers: [
+				"Answer 3.1",
+				"Answer 3.2",
+				"Answer 3.3",
+				"Answer 3.4",
+				"Answer 3.5" ]
+			},
+			{
+				question: "Question 04",
+				description: "Question 04's description",
+				answers: [
+				"Answer 4.1",
+				"Answer 4.2",
+				"Answer 4.3" ]
 			}
 		]
 		}
-		this.addDay = this.addDay.bind(this)
-		console.log(this.state)
+		// This binding is necessary to make `this` work in the callback
+    	this.incrementCount = this.incrementCount.bind(this);
+    	this.decrementCount = this.decrementCount.bind(this);
 	}
-	addDay(newDay) {
-		this.setState({
-			allWalkDays: [
-				...this.state.allWalkDays,
-				newDay
-			]
-		}, function () {
-			console.log(this.state)
-		})
+	countQuestions() {
+		return this.state.allQuestions.length
 	}
-	countDays(filter) {
-		return this.state.allWalkDays.filter(
-			(day) => (filter) ? day[filter] : day
-		).length
+	incrementCount() {
+	    this.setState({
+	      i: this.state.i + 1
+	    });
 	}
+	decrementCount() {
+	    this.setState({
+	      i: this.state.i - 1
+	    });
+	}	
 	render() {
-		//changing paths resets the state?
+		const allQuestions = this.state.allQuestions
+		let button = null;
+	    if (this.state.i>0) {
+	      var prevbutton = <button onClick={this.decrementCount}>Previous Question</button>;
+	    }
+	    if (this.state.i + 1>this.countQuestions()) {
+	      return <Results />;
+	  	}
 		return (
-			<div className="app">
-			<Menu />
-			{(this.props.location.pathname === "/") ? 
-				<DogWalkCount total={this.countDays()}
-							  raining={this.countDays("raining")}
-							  offleash={this.countDays("offleash")} />
-			: (this.props.location.pathname === "/add-day") ?
-				<AddDayForm onNewDay={this.addDay} />
-			:
-				<DogWalkList days={this.state.allWalkDays} />
-			}
+			<div>
+			<QuizMeta total={this.countQuestions()}
+					  currentQuestion={ this.state.i + 1 } />
+			<MidResult />
+			<Question incrementCount={ this.incrementCount }
+					  question={ this.state.allQuestions[this.state.i]["question"] }
+					  description={ this.state.allQuestions[this.state.i]["description"] }
+					  answers={ this.state.allQuestions[this.state.i]["answers"] } />
+			{prevbutton}
 			</div>
 		)
 	}
 }
-
-
-
-
-
